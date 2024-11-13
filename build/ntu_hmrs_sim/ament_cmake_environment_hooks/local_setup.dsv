@@ -1,3 +1,0 @@
-source;share/ntu_hmrs_sim/environment/ament_prefix_path.sh
-source;share/ntu_hmrs_sim/environment/path.sh
-source;share/ntu_hmrs_sim/environment/gz_sim_resource_path.dsv

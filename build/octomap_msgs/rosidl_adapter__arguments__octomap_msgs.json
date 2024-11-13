@@ -1,9 +1,0 @@
-{
-  "package_name": "octomap_msgs",
-  "non_idl_tuples": [
-    "/home/kalhan/Base_Experiment/ntu_hmrs_ws/src/octomap2/octomap_msgs:msg/Octomap.msg",
-    "/home/kalhan/Base_Experiment/ntu_hmrs_ws/src/octomap2/octomap_msgs:msg/OctomapWithPose.msg",
-    "/home/kalhan/Base_Experiment/ntu_hmrs_ws/src/octomap2/octomap_msgs:srv/BoundingBoxQuery.srv",
-    "/home/kalhan/Base_Experiment/ntu_hmrs_ws/src/octomap2/octomap_msgs:srv/GetOctomap.srv"
-  ]
-}

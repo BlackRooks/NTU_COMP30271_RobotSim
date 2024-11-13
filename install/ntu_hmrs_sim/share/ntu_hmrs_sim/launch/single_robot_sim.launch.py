@@ -1,1 +1,0 @@
-/home/kalhan/Base_Experiment/ntu_hmrs_ws/src/ntu_hmrs_sim/launch/single_robot_sim.launch.py

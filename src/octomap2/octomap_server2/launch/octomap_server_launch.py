@@ -8,7 +8,7 @@ from launch.actions import DeclareLaunchArgument
 
 def generate_launch_description():
     return LaunchDescription([
-        DeclareLaunchArgument('input_cloud_topic', default_value='/atlas/velodyne_points'),
+        DeclareLaunchArgument('input_cloud_topic', default_value='/atlas/rgbd_camera/points'),
         DeclareLaunchArgument('resolution', default_value='0.10'),
         DeclareLaunchArgument('frame_id', default_value='map'),
         DeclareLaunchArgument('base_frame_id', default_value='base_link'),

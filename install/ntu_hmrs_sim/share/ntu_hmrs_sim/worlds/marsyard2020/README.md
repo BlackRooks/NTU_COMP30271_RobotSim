@@ -1,1 +1,0 @@
-/home/kalhan/Base_Experiment/ntu_hmrs_ws/src/ntu_hmrs_sim/worlds/marsyard2020/README.md
