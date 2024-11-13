@@ -78,6 +78,11 @@ def namespace_sdf_file(sdf_path, params):
             sensor.find('topic').text = namespace + '/laser_scan'
             # Create the ignition frame id for the laser scan and make it unique
             sensor.find('ignition_frame_id').text = namespace + '/' + sensor.find('ignition_frame_id').text
+        if sensor.attrib['name'] == 'camera_front':
+            # Give the laser scan points a unique topic name
+            sensor.find('topic').text = namespace + '/rgbd_image'
+            # Create the ignition frame id for the laser scan and make it unique
+            sensor.find('ignition_frame_id').text = namespace + '/' + sensor.find('ignition_frame_id').text
         if sensor.attrib['name'] == 'imu_sensor' and params['use_imu']:
             # Set always on for the imu sensor to true
             sensor.find('always_on').text = '0'

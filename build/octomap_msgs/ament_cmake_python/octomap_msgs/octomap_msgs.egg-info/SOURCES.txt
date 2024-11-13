@@ -1,0 +1,6 @@
+setup.py
+octomap_msgs/__init__.py
+octomap_msgs.egg-info/PKG-INFO
+octomap_msgs.egg-info/SOURCES.txt
+octomap_msgs.egg-info/dependency_links.txt
+octomap_msgs.egg-info/top_level.txt
