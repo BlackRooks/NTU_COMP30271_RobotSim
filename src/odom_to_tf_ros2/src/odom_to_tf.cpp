@@ -47,6 +47,19 @@ class OdomToTF : public rclcpp::Node {
 
             tfs_.transform.rotation = msg->pose.pose.orientation;
 
+            // Log the odometry data
+            RCLCPP_DEBUG(this->get_logger(),
+                        "Odometry Data:\n"
+                        "Position - x: %.3f, y: %.3f, z: %.3f\n"
+                        "Orientation - x: %.3f, y: %.3f, z: %.3f, w: %.3f",
+                        msg->pose.pose.position.x,
+                        msg->pose.pose.position.y,
+                        msg->pose.pose.position.z,
+                        msg->pose.pose.orientation.x,
+                        msg->pose.pose.orientation.y,
+                        msg->pose.pose.orientation.z,
+                        msg->pose.pose.orientation.w);
+
             tfb_->sendTransform(tfs_);
         }
 };
