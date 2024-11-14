@@ -56,11 +56,26 @@
         <collision name='collision'>
           <geometry>
             <plane>
-              <normal>0.0 0.0 1</normal>
-              <size>1 1</size>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
             </plane>
           </geometry>
         </collision>
+
+        <visual name='visual'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.4 0.4 0.4 1.0</ambient>
+            <diffuse>0.6 0.6 0.6 1.0</diffuse>
+            <specular>0.1 0.1 0.1 1.0</specular>
+            <emissive>0.0 0.0 0.0 1.0</emissive>
+          </material>
+        </visual>
       </link>
       <pose>0 0 0 0 0 0</pose>
     </model>
