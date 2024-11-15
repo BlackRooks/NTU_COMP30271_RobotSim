@@ -496,7 +496,7 @@
         </limit>
         <dynamics>
           <spring_reference>0</spring_reference>
-          <spring_stiffness>0</spring_stiffness>
+          <spring_stiffness>1</spring_stiffness>
         </dynamics>
         <use_parent_model_frame>1</use_parent_model_frame>
       </axis>
@@ -564,7 +564,7 @@
         </limit>
         <dynamics>
           <spring_reference>0</spring_reference>
-          <spring_stiffness>0</spring_stiffness>
+          <spring_stiffness>1</spring_stiffness>
         </dynamics>
         <use_parent_model_frame>1</use_parent_model_frame>
       </axis>
@@ -632,7 +632,7 @@
         </limit>
         <dynamics>
           <spring_reference>0</spring_reference>
-          <spring_stiffness>0</spring_stiffness>
+          <spring_stiffness>1</spring_stiffness>
         </dynamics>
         <use_parent_model_frame>1</use_parent_model_frame>
       </axis>
@@ -700,7 +700,7 @@
         </limit>
         <dynamics>
           <spring_reference>0</spring_reference>
-          <spring_stiffness>0</spring_stiffness>
+          <spring_stiffness>1</spring_stiffness>
         </dynamics>
         <use_parent_model_frame>1</use_parent_model_frame>
       </axis>
@@ -718,8 +718,10 @@
       <!-- Actual value of husky 0.5708, we use a different value for better steering -->
       <wheel_separation>0.5708</wheel_separation>
       <wheel_radius>0.1651</wheel_radius>
-      <odom_publish_frequency>100</odom_publish_frequency>
+      <odom_publish_frequency>10</odom_publish_frequency>
       <topic>cmd_vel</topic>
+      <max_linear_acceleration>1</max_linear_acceleration>
+      <max_angular_acceleration>1</max_angular_acceleration>
     </plugin>
 
     <!-- ground truth odometry plugin -->
