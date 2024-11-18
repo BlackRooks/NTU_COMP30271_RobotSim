@@ -22,7 +22,7 @@ def generate_launch_description():
         DeclareLaunchArgument('ground_filter/plane_distance', default_value='0.2'),
         DeclareLaunchArgument('compress_map', default_value='True'),
         DeclareLaunchArgument('incremental_2D_projection', default_value='False'),
-        DeclareLaunchArgument('sensor_model/max_range', default_value='10.0'), # default -1.0
+        DeclareLaunchArgument('sensor_model/max_range', default_value='-1.0'), # default -1.0
         DeclareLaunchArgument('sensor_model/hit', default_value='0.7'),
         DeclareLaunchArgument('sensor_model/miss', default_value='0.4'),
         DeclareLaunchArgument('sensor_model/min', default_value='0.12'),
