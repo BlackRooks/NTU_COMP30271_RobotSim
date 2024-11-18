@@ -15,14 +15,14 @@ def generate_launch_description():
         DeclareLaunchArgument('height_map', default_value='True'),
         DeclareLaunchArgument('colored_map', default_value='True'),
         DeclareLaunchArgument('color_factor', default_value='0.8'),
-        DeclareLaunchArgument('filter_ground', default_value='True'),
+        DeclareLaunchArgument('filter_ground', default_value='false'),
         DeclareLaunchArgument('filter_speckles', default_value='True'),
         DeclareLaunchArgument('ground_filter/distance', default_value='0.04'),
         DeclareLaunchArgument('ground_filter/angle', default_value='0.15'),
         DeclareLaunchArgument('ground_filter/plane_distance', default_value='0.2'),
         DeclareLaunchArgument('compress_map', default_value='True'),
         DeclareLaunchArgument('incremental_2D_projection', default_value='True'),
-        DeclareLaunchArgument('sensor_model/max_range', default_value='-1.0'), # default -1.0
+        DeclareLaunchArgument('sensor_model/max_range', default_value='8.0'), # default -1.0
         DeclareLaunchArgument('sensor_model/hit', default_value='0.7'),
         DeclareLaunchArgument('sensor_model/miss', default_value='0.4'),
         DeclareLaunchArgument('sensor_model/min', default_value='0.12'),
