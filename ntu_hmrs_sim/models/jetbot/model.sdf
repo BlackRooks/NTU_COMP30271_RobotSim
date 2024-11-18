@@ -65,8 +65,9 @@
           </contact>
           <friction>
             <ode>
-              <mu>0.5</mu>
-              <mu2>0</mu2>
+              <mu>0.0</mu>
+              <mu2>0.0</mu2>
+              <fdir1>0 0 1</fdir1>
             </ode>
           </friction>
         </surface>
@@ -95,8 +96,9 @@
           </contact>
           <friction>
             <ode>
-              <mu>0.5</mu>
-              <mu2>0</mu2>
+              <mu>0.0</mu>
+              <mu2>0.0</mu2>
+              <fdir1>0 0 1</fdir1>
             </ode>
           </friction>
         </surface>
@@ -213,54 +215,67 @@
       <velocity_decay/>
       <velocity_decay/>
 
-		<sensor name="camera_front" type="rgbd_camera">
-			<topic>rgbd_camera</topic>
-			<ignition_frame_id>realsense</ignition_frame_id>
-			<camera name="camera_front">
-				<horizontal_fov>1.0472</horizontal_fov>
-				<lens>
-					<intrinsics>
-						<fx>277.1</fx>
-						<fy>277.1</fy>
-						<cx>160.5</cx>
-						<cy>120.5</cy>
-						<s>0</s>
-					</intrinsics>
-				</lens>
-				<distortion>
-					<k1>0.0</k1>
-					<k2>0.0</k2>
-					<k3>0.0</k3>
-					<p1>0.0</p1>
-					<p2>0.0</p2>
-					<center>0.5 0.5</center>
-				</distortion>
-				<image>
-					<width>320</width>
-					<height>240</height>
-					<format>R8G8B8</format>
-				</image>
-				<clip>
-					<near>0.01</near>
-					<far>300</far>
-				</clip>
-				<depth_camera>
-				<clip>
-					<near>0.1</near>
-					<far>10</far>
-				</clip>
-				</depth_camera>
-				<noise>
-					<type>gaussian</type>
-					<mean>0</mean>
-					<stddev>0.00</stddev>
-				</noise>
-			</camera>
-			<always_on>1</always_on>
-			<update_rate>5</update_rate>
-			<visualize>1</visualize>
-			<pose frame="">0 0 0 0 0 0</pose>
-		</sensor> 
+    <visual name="camera_visual">
+            <pose>0.23 0 0.19 0 0 0</pose>
+            <geometry>
+                <box>
+                    <size>0.02 0.02 0.02</size>
+                </box>
+            </geometry>
+        </visual>
+        <sensor name="camera_front" type="rgbd_camera">
+            <topic>rgbd_camera</topic>
+			      <ignition_frame_id>realsense</ignition_frame_id>
+            <pose>0.23 0 0.19 0 0 0</pose>
+            <always_on>1</always_on>
+            <update_rate>20</update_rate>
+            <camera name="camera_front">
+                <!--<cameraInfoTopicName>camera_info</cameraInfoTopicName>-->
+                <!--<hackBaseline>0.07</hackBaseline>-->
+                <pose frame="">0 0 0 0 -1.5707 1.5707</pose>
+                <horizontal_fov>1.2113</horizontal_fov>
+                <lens>
+                    <intrinsics>
+                      <!-- fx = fy = width / ( 2 * tan (hfov / 2 ) ) -->
+                      <fx>462.1</fx>
+                      <fy>462.1</fy>
+                      <!-- cx = ( width + 1 ) / 2 -->
+                      <cx>320.5</cx>
+                      <!-- cy = ( height + 1 ) / 2 -->
+                      <cy>180.5</cy>
+                      <s>0</s>
+                    </intrinsics>
+                </lens>
+                <distortion>
+                    <k1>0.0</k1>
+                    <k2>0.0</k2>
+                    <k3>0.0</k3>
+                    <p1>0.0</p1>
+                    <p2>0.0</p2>
+                    <center>0.5 0.5</center>
+                </distortion>
+                <image>
+                    <width>640</width>
+                    <height>360</height>
+                    <format>R8G8B8</format>
+                </image>
+                <clip>
+                    <near>0.01</near>
+                    <far>300</far>
+                </clip>
+                <depth_camera>
+                  <clip>
+                    <near>0.1</near>
+                    <far>10</far>
+                  </clip>
+                </depth_camera>
+                <noise>
+                    <type>gaussian</type>
+                    <mean>0</mean>
+                    <stddev>0.007</stddev>
+                </noise>
+            </camera>
+        </sensor>
 
     </link>
 
@@ -307,8 +322,8 @@
           </contact>
           <friction>
             <ode>
-              <mu>1</mu>
-              <mu2>1</mu2>
+              <mu>0.8</mu>
+              <mu2>0.8</mu2>
               <fdir1>0 0 1</fdir1>
             </ode>
           </friction>
@@ -387,8 +402,8 @@
           </contact>
           <friction>
             <ode>
-              <mu>1</mu>
-              <mu2>1</mu2>
+              <mu>0.8</mu>
+              <mu2>0.8</mu2>
               <fdir1>0 0 1</fdir1>
             </ode>
           </friction>
