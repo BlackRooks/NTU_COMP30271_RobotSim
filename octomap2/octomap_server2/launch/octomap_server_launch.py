@@ -15,7 +15,7 @@ def generate_launch_description():
         DeclareLaunchArgument('height_map', default_value='True'),
         DeclareLaunchArgument('colored_map', default_value='True'),
         DeclareLaunchArgument('color_factor', default_value='0.8'),
-        DeclareLaunchArgument('filter_ground', default_value='false'),
+        DeclareLaunchArgument('filter_ground', default_value='True'),
         DeclareLaunchArgument('filter_speckles', default_value='True'),
         DeclareLaunchArgument('ground_filter/distance', default_value='0.04'),
         DeclareLaunchArgument('ground_filter/angle', default_value='0.15'),
