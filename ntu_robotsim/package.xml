@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="3">
 
-  <name>ntu_hmrs_sim</name>
+  <name>ntu_robotsim</name>
 
   <version>0.0.1</version>
 
@@ -9,7 +9,7 @@
 
   <maintainer email="kalhan.munasingarachchige.2023@ntu.ac.uk">Kalhan Boralessa</maintainer>
 
-  <license>TODO</license>
+  <license>Apache 2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 

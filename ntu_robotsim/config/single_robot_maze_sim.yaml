@@ -11,11 +11,3 @@ spawn_robot:
     roll: "0.0"
     pitch: "0.0"
     yaw: "0.0"
-    
-teleop_joy:
-  ros__parameters:
-    enable_teleop_joy: false
-    joy_config: "xbox" # "xbox" or "ps3"
-    joy_dev: "0" # joystick device
-    cmd_vel_topic: "cmd_vel" # topic to publish the cmd_vel to, gets namespaced with the robot_name
-    joy_topic: "joy" # topic to subscribe to for the joystick input, gets namespaced with the robot_name
