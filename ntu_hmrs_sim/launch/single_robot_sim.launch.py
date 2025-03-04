@@ -49,12 +49,11 @@ def namespace_ros_gz_config(ros_gz_config, model_namespace):
 
 
 def generate_launch_description():
-    ntu_hmrs_sim_share_dir = get_package_share_directory('ntu_robotsim')
+    ntu_hmrs_sim_share_dir = get_package_share_directory('ntu_hmrs_sim')
 
     # Simple hack to get the world argument from the command line, see https://answers.ros.org/question/376816/how-to-pass-launch-args-dynamically-during-launch-time/
-    # print(f'Set the world (default maze), e.g. ros2 launch ntu_hmrs_sim single_robot_sim.launch.py world:=maze')
-    # print(f'Available worlds: maze, marsyard2020')
-    # above functionality is not used here. You have to create config files to use above functionality.
+    print(f'Set the world (default marsyard2020), e.g. ros2 launch ntu_hmrs_sim single_robot_sim.launch.py world:=maze')
+    print(f'Available worlds: maze, marsyard2020')
     world = 'maze'
     for arg in sys.argv:
         if arg.startswith('world:='):
@@ -64,15 +63,15 @@ def generate_launch_description():
     with open(sim_config_path, 'r') as f:
         sim_config = yaml.safe_load(f)
         print(yaml.dump(sim_config, sort_keys=False, default_flow_style=False))
+        teleop_joy_params = sim_config['teleop_joy']['ros__parameters']
         spawn_robot_params = sim_config['spawn_robot']['ros__parameters']
 
     model_namespace = spawn_robot_params['robot_name']
 
-    # Spawn the robot
+    # Spawn the two robots
     spawn_robot_python_source = PythonLaunchDescriptionSource(
         os.path.join(ntu_hmrs_sim_share_dir, 'launch', 'spawn_robot.launch.py')
     )
-
     # transform all booleans to string, IncldueLaunchDescription does not support booleans
     booleans_to_strings_in_dict(spawn_robot_params)
     spawn_robot = IncludeLaunchDescription(
@@ -87,9 +86,26 @@ def generate_launch_description():
     ros_gz_bridge = ExecuteProcess(cmd=['ros2', 'run', 'ros_gz_bridge', 'parameter_bridge',
                                         '--ros-args', '-p', 'config_file:=' + ros_gz_config], output='screen')
 
+    if teleop_joy_params['enable_teleop_joy']:
+        # Define the teleop node
+        if model_namespace != '':
+            teleop_joy_params['cmd_vel_topic'] = model_namespace + '/' + teleop_joy_params['cmd_vel_topic']
+            teleop_joy_params['joy_topic'] = model_namespace + '/' + teleop_joy_params['joy_topic']
+        teleop_joy_node = GroupAction(
+            actions=[
+                SetRemap(src='/cmd_vel', dst=teleop_joy_params['cmd_vel_topic']),
+                SetRemap(src='/joy', dst=teleop_joy_params['joy_topic']),
+                IncludeLaunchDescription(
+                    PythonLaunchDescriptionSource([get_package_share_directory('teleop_twist_joy'), '/launch/teleop-launch.py']),
+                    launch_arguments={'joy_config': teleop_joy_params['joy_config'], 'joy_dev': teleop_joy_params['joy_dev']}.items()
+                )
+            ]
+        )
+
     print('If you want to control the robot with the keyboard, run the following commands in a new terminal')
     print('ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r __node:=teleop_twist_keyboard_node_atlas -r /cmd_vel:=/atlas/cmd_vel')
 
     launch_list = [spawn_robot, ros_gz_bridge]
-
+    if teleop_joy_params['enable_teleop_joy']:
+        launch_list.append(teleop_joy_node)
     return LaunchDescription(launch_list)
