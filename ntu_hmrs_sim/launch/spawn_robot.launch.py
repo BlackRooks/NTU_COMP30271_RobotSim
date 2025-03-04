@@ -96,7 +96,7 @@ def namespace_sdf_file(sdf_path, params):
 
 def launch_setup(context):
     print('launching robot')
-    ntu_hmrs_sim_share_dir = get_package_share_directory('ntu_robotsim')
+    ntu_hmrs_sim_share_dir = get_package_share_directory('ntu_hmrs_sim')
     config_file = os.path.join(ntu_hmrs_sim_share_dir, 'config', 'spawn_robot.yaml')
     with open(config_file, 'r') as f:
         params = yaml.safe_load(f)['spawn_robot']['ros__parameters']

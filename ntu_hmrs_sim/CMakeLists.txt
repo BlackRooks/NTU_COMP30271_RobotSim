@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(ntu_robotsim)
+project(ntu_hmrs_sim)
 
 find_package(ament_cmake REQUIRED)
 
